@@ -27,7 +27,7 @@ export const DashboardPage = () => {
     const { user } = useAuth();
 
     return (
-        <StyledContainer>
+        <StyledContainer maxWidth={false}>
             <StyledBox >
                 <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <h1>Bem-Vindo, <strong>{user?.fullName}</strong>!</h1>
