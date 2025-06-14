@@ -15,8 +15,7 @@ import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import { mockUsers } from "../db/mockUsers.js";
 import { useNavigate } from "react-router";
-import { useUser } from "../contexts/UserContext.jsx";
-
+import { useAuth } from "../contexts/AuthContext.jsx";
 
 
 //components
@@ -60,18 +59,19 @@ const LoginPage = () => {
     const [userTextField, setUserTextField] = useState('');
     const [passwordTextField, setPasswordTextField] = useState('');
     const [openError, setOpenError] = useState(false);
-    const { setUser } = useUser();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
 
     function handleSubmit(event) {
+        console.log(login)
         event.preventDefault();
         const authenticatedUser = mockUsers.find(
             (obj) => obj.username === userTextField && obj.password === passwordTextField
         );
 
         if (authenticatedUser) {
-            setUser(authenticatedUser);
+            login(authenticatedUser);
             navigate('/dashboard');
             return;
         }
