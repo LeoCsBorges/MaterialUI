@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { useAuth } from "../contexts/AuthContext";
-import { Box, Button, Container } from '@mui/material';
+import { Box, Button, Container, Dialog } from '@mui/material';
+import LogoutButton from '../components/LogoutButton';
 
 //components
 const StyledContainer = styled(Container)(() => ({
@@ -23,16 +24,14 @@ const StyledBox = styled(Box)(() => ({
 
 
 export const DashboardPage = () => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
 
     return (
         <StyledContainer>
             <StyledBox >
                 <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <h1>Bem-Vindo, <strong>{user?.fullName}</strong>!</h1>
-                    <Button variant='outlined' color='error' size='small' onClick={logout}>
-                        Logout
-                    </Button>
+                    <LogoutButton />
                 </Box>
             </StyledBox>
         </StyledContainer>

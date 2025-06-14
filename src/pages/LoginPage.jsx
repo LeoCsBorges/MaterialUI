@@ -64,7 +64,6 @@ const LoginPage = () => {
 
 
     function handleSubmit(event) {
-        console.log(login)
         event.preventDefault();
         const authenticatedUser = mockUsers.find(
             (obj) => obj.username === userTextField && obj.password === passwordTextField
